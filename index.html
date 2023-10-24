@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  
+</head>
+<body> 
+    <div class="container">
+        <nav>
+            <a href="" class="logo">MON  BUDGET</a>
+            <ul>
+                <li><a href=""></a>AACEUIL</li>
+                <li><a href=""></a>AJOUTER UNE TRANSACTION</li>
+                <li><a href=""></a>LISTES DES TRANSACTIONS</li>
+                <li><a href=""></a>BUDGET</li>
+                <li>
+                    <button class="btn" id="displayForm">Se connecter</button>
+                </li>
+            </ul>
+        </nav>
+
+
+        <section>
+            <div class="sec-container">
+                <div class="form-wrapper">
+                    <div class="card">
+                        <div class="card-header">
+                            <div id="forLogin" class="form-header active" >Se connecter</div>
+                            <div id="forRegister" class="form-header">S'inscrire</div>
+                        </div>
+
+                        <div class="card-body" id="formContainer">
+                            <form id="loginForm">
+                                <input type="number" class="form-control" placeholder="@TELEPHONE" />
+                                <input type="password" class="form-control" placeholder="@MOT DE PASSE" />
+                                <button class="formButton">Connexion</button>
+                            </form> 
+
+                            <form id="registerForm" class="toggleForm">
+                                <input type="text" class="form-control" placeholder="@NOM" />
+                                <input type="text" class="form-control" placeholder="@PRENOM" />
+                                <input type="mail" class="form-control" placeholder="@Mail" />
+                                <input type="text" class="form-control" placeholder="@TELEPHONE" />
+                                <input type="password" class="form-control" placeholder="@Mot de passe" />
+                                <button class="formButton">Incription</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+
+    </div>
+   
+
+    <script>
+        const displayForm = _('displayForm');
+        const forlogin = _('forlogin');
+        const loginForm = _('loginForm'); 
+        const forRegister = _('forRegister');
+        const registerForm = _('registerForm');
+        const formContainer = _('formContainer');
+        displayForm.addEventListener('click', showForm);
+  
+        forLogin.addEventListener('click', () => {
+            forLogin.classList.add('active');
+            forRegister.classList.remove('active');
+            if(loginForm.classList.contains('toggleForm')) {
+                formContainer.style.transfom = 'translate(0%)';
+                formContainer.style.transition = 'transform .5s';
+                registerForm.classList.add('toggleForm');
+                loginForm.classList.remove('toggleForm'); 
+            }
+        });
+
+        forRegister.addEventListener('click', () => {
+            forLogin.classList.remove('active');
+            forRegister.classList.add('active');
+            if(registerForm.classList.contains('toggleForm')) {
+                formContainer.style.transfom = 'translate(-100%)';
+                formContainer.style.transition = 'transform .5s';
+                registerForm.classList.remove('toggleForm');
+                loginForm.classList.add('toggleForm'); 
+
+            } 
+        }); 
+          
+        function _(e) {
+            return document.getElementById(e);
+        }
+
+        function showForm() {
+              document.querySelector('.form-wrapper .card').classList.toggle('show');
+        }
+
+
+        
+
+    </script>
+   
+</body>
+</html>
